@@ -36,16 +36,16 @@ CREATE UNIQUE INDEX ON "accounts" ("owner", "currency");
 
 CREATE INDEX ON "entries" ("account_id");
 
-CREATE INDEX ON "transfer" ("from_account_id");
+CREATE INDEX ON "transfers" ("from_account_id");
 
-CREATE INDEX ON "transfer" ("to_account_id");
+CREATE INDEX ON "transfers" ("to_account_id");
 
-CREATE INDEX ON "transfer" ("from_account_id", "to_account_id");
+CREATE INDEX ON "transfers" ("from_account_id", "to_account_id");
 
 ALTER TABLE "accounts" ADD FOREIGN KEY ("owner") REFERENCES "users" ("user_name");
 
 ALTER TABLE "entries" ADD FOREIGN KEY ("account_id") REFERENCES "accounts" ("id");
 
-ALTER TABLE "transfer" ADD FOREIGN KEY ("from_account_id") REFERENCES "accounts" ("id");
+ALTER TABLE "transfers" ADD FOREIGN KEY ("from_account_id") REFERENCES "accounts" ("id");
 
-ALTER TABLE "transfer" ADD FOREIGN KEY ("to_account_id") REFERENCES "accounts" ("id");
+ALTER TABLE "transfers" ADD FOREIGN KEY ("to_account_id") REFERENCES "accounts" ("id");
