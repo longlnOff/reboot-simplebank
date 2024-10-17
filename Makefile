@@ -1,4 +1,4 @@
-DB_URL_MIGRATE = postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable
+DB_URL_MIGRATE = "postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable"
 PATH_SCHEMA = sql/schema
 
 postgres:
