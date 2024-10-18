@@ -30,3 +30,9 @@ down_migrate:
 
 one_down_migrate:
 	migrate -path $(PATH_SCHEMA) -database $(DB_URL_MIGRATE) -verbose down 1
+
+test:
+	CONFIG_PATH=/home/longln/SourceCode/github.com/longln/reboot-simplebank/local go test -v -count=1 ./...
+
+sqlc:
+	sqlc generate

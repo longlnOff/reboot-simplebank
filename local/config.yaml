@@ -1,0 +1,24 @@
+
+
+
+database:
+  driver: postgres
+  engine: postgresql
+  info:
+    user_name: root
+    password: secret
+    host: localhost
+    port: 5432
+    database_name: simple_bank
+    max_idle_conns: 10
+    max_open_conns: 100
+    conn_max_lifetime: 60
+
+
+logger:
+  log_level: debug
+  file_log_name: ./logs/log.txt
+  max_size: 500   # max file log size, in Megabytes
+  max_backups: 3
+  max_age: 28     # 28 days
+  compress: true

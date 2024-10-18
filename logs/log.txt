@@ -1,0 +1,2 @@
+2024-10-18T14:37:11.737+0700	[34mINFO[0m	initialize/logger.init.go:12	init logger success
+2024-10-18T14:37:11.737+0700	[34mINFO[0m	initialize/database.init.go:27	init database success
