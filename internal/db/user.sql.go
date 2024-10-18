@@ -76,50 +76,6 @@ func (q *Queries) GetUser(ctx context.Context, userName string) (User, error) {
 	return i, err
 }
 
-const listUsers = `-- name: ListUsers :many
-SELECT user_name, hashed_password, full_name, email, password_changed_at, created_at FROM users
-WHERE user_name = $1
-ORDER BY user_name
-LIMIT $2
-OFFSET $3
-`
-
-type ListUsersParams struct {
-	UserName string `json:"user_name"`
-	Limit    int32  `json:"limit"`
-	Offset   int32  `json:"offset"`
-}
-
-func (q *Queries) ListUsers(ctx context.Context, arg ListUsersParams) ([]User, error) {
-	rows, err := q.db.QueryContext(ctx, listUsers, arg.UserName, arg.Limit, arg.Offset)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	items := []User{}
-	for rows.Next() {
-		var i User
-		if err := rows.Scan(
-			&i.UserName,
-			&i.HashedPassword,
-			&i.FullName,
-			&i.Email,
-			&i.PasswordChangedAt,
-			&i.CreatedAt,
-		); err != nil {
-			return nil, err
-		}
-		items = append(items, i)
-	}
-	if err := rows.Close(); err != nil {
-		return nil, err
-	}
-	if err := rows.Err(); err != nil {
-		return nil, err
-	}
-	return items, nil
-}
-
 const updateUser = `-- name: UpdateUser :one
 UPDATE users
     SET 

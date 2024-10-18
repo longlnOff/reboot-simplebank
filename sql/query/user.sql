@@ -13,13 +13,6 @@ RETURNING *;
 SELECT * FROM users
 WHERE user_name = $1 LIMIT 1;
 
--- name: ListUsers :many
-SELECT * FROM users
-WHERE user_name = $1
-ORDER BY user_name
-LIMIT $2
-OFFSET $3;
-
 -- name: UpdateUser :one
 UPDATE users
     SET 
