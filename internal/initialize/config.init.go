@@ -12,6 +12,7 @@ func LoadConfig() {
 	// 1. Load config path from .env
 	viper := viper.New()
 	// set config folder
+	os.Setenv("CONFIG_PATH", "/home/longln/SourceCode/github.com/longln/reboot-simplebank/local")
 	viper.AddConfigPath(os.Getenv("CONFIG_PATH"))
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
