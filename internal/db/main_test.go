@@ -10,10 +10,12 @@ import (
 
 var (
 	testQueries *Queries
+	testStore *StoreSQL
 )
 
 func TestMain(m *testing.M) {
 	initialize.Run()
 	testQueries = New(global.Database)
+	testStore = NewStore(global.Database)
 	os.Exit(m.Run())
 }

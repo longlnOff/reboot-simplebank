@@ -9,6 +9,12 @@ import (
 )
 
 type Querier interface {
+	// -- name: GetAccountForUpdate :one
+	// SELECT * FROM accounts
+	// WHERE id = $1
+	// FOR NO KEY UPDATE
+	// LIMIT 1;
+	AddBalance(ctx context.Context, arg AddBalanceParams) (Account, error)
 	CreateAccount(ctx context.Context, arg CreateAccountParams) (Account, error)
 	CreateEntry(ctx context.Context, arg CreateEntryParams) (Entry, error)
 	CreateTransfer(ctx context.Context, arg CreateTransferParams) (Transfer, error)
